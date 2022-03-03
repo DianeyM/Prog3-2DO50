@@ -13,11 +13,11 @@ class LinkedList {
     constructor(){
         this.head = null;
         this.size = 0;
+        this.idData = 0;
     }
 
-
     append(data){
-        var newNode = new Node(data);
+        var newNode = new Node(this.idData + '. ' +data);
         var currentNode = this.head;
         if(this.head == null){
             this.head = newNode;
@@ -28,6 +28,7 @@ class LinkedList {
             currentNode.next = newNode;
         }
         this.size++;
+        this.idData++;
     }
 
     printInConsole(){
