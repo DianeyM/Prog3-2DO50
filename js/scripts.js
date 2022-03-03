@@ -77,10 +77,8 @@ var formContentTextArea = document.getElementById("formContentTextArea")
 const linkedList = new LinkedList();
 
 linkedListForm.addEventListener("submit", preventDefaultEvents);
-/*linkedListForm.addEventListener("submit", extractElementFromForm);*/
 linkedListForm.addEventListener("submit", extractElementFromForm);
-linkedListForm.addEventListener("submit", showElementsOnPage2);
-/*linkedListForm.addEventListener("submit", removeNode);*/
+linkedListForm.addEventListener("submit", showElementsOnPage);
 formContentTextArea.addEventListener('select', getSelectionToString);
 linkedListForm.addEventListener("submit", updateForm);
 
@@ -89,11 +87,11 @@ function preventDefaultEvents(event){
     event.preventDefault();
 }
 
-function updateForm(event){
+function updateForm(){
     linkedListForm.reset();
 }
 
-function extractElementFromForm(event){
+function extractElementFromForm(){
     var element = linkedListForm.elements["elemetN"].value; /*El valor entre [] puede ser el nombre o el id del input (en clase se uso el nombre y no el id)*/
     appendElements(element);
 }
@@ -105,15 +103,7 @@ function appendElements(data){
 	console.log("--------------------");
 }
 
-function showElementsOnPage(event){
-    var formContentTittle = document.getElementById("formContentTittle");
-    formContentTittle.innerHTML = "The elements you entered to the list were:";
-    var element = linkedListForm.elements["elemetN"].value; /*El valor entre [] puede ser el nombre o el id del input (en clase se uso el nombre y no el id)*/
-    formContentTextArea.innerHTML += "Element; " + element + "<br/>";
-}
-
-
-function showElementsOnPage2(event){
+function showElementsOnPage(){
     var formContentTittle = document.getElementById("formContentTittle");
     formContentTittle.innerHTML = "The elements you entered to the list were:";
     formContentTextArea.innerHTML = linkedList.printInConsole();
@@ -139,6 +129,12 @@ function updateElementsOnPage(){
     formContentTextArea.innerHTML = linkedList.printInConsole();
 }
 
+/*function showElementsOnPage2(event){
+    var formContentTittle = document.getElementById("formContentTittle");
+    formContentTittle.innerHTML = "The elements you entered to the list were:";
+    var element = linkedListForm.elements["elemetN"].value; /*El valor entre [] puede ser el nombre o el id del input (en clase se uso el nombre y no el id)*/
+    /*formContentTextArea.innerHTML += "Element; " + element + "<br/>";
+}*/
 
 
 
